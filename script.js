@@ -1,6 +1,3 @@
-
-
-
 let form = document.getElementById('passwordGeneratingForm')
 let upperCaseElement = document.getElementById('upperCase')  
 let lowerCaseElement = document.getElementById('lowerCase')  
@@ -31,8 +28,7 @@ form.addEventListener("submit" , function(event) {
         console.log(values[0]);
 
 //selecting which values to add to the loop
- values.map(function (value, i) {
-     console.log(value.id);
+ values.map(function (value, i) {;
      if(value.id === "upperCase"){
      merge = [...merge , ...upperCaseArray]
      console.log(merge);
@@ -49,13 +45,19 @@ form.addEventListener("submit" , function(event) {
         merge = [...merge , ...specialCharArray]
         console.log(merge);
      }
+   })
 
+
+var printedPW = [];
  for (let i = 0; i < characterAmountElement.value; i++) {
-   console.log (Math.floor(Math.random() * merge.length));
- }
-
-
+   var generatedCharacterIndex = (Math.floor(Math.random() * merge.length));
+   var generatedCharacter = (merge[generatedCharacterIndex]);
+   printedPW.push(generatedCharacter)
+}
+function writePassword(){
+let passwordEl = document.getElementById('password')
+var password = printedPW.join('');
+passwordEl.textContent = password
+} 
+writePassword();
  })
-
-        // get password length to loop through password length
-})
